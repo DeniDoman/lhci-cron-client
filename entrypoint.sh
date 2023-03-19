@@ -11,7 +11,7 @@ fi
 CRON="${CRON:-@daily}"
 
 # Add task to cron
-crontab -l | { cat; echo "$CRON /home/lhci/lhci-client.sh"; } | crontab -
+crontab -l | { cat; echo "$CRON /home/lhci/lhci-client.sh 2>&1"; } | crontab -
 
 # Infinite wait
 tail -f /dev/null
