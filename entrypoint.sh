@@ -10,8 +10,14 @@ fi
 # Set default run frequency if the env variable is not set
 CRON="${CRON:-@daily}"
 
-# Add task to cron
-crontab -l | { cat; echo "$CRON /home/lhci/lhci-client.sh 2>&1"; } | crontab -
+# Provide env variables to the cron
+env >> /etc/environment
 
-# Infinite wait
-tail -f /dev/null
+# Add path and task to cron
+echo PATH="$PATH" >> mycron
+echo "$CRON /home/lhci/reports/lhci-client.sh >> /proc/1/fd/1" >> mycron
+crontab mycron
+rm mycron
+
+# Run cron in foreground
+cron -f

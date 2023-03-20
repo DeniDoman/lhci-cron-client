@@ -1,7 +1,6 @@
 #!/bin/sh
 set -e
 
-# Set current timestamp as commit hash env variable
 LHCI_BUILD_CONTEXT__CURRENT_HASH="${LHCI_BUILD_CONTEXT__CURRENT_HASH:-$(node -p "new Date().getTime().toString(16).split('').reverse().join('')")}"
 export LHCI_BUILD_CONTEXT__CURRENT_HASH
 
