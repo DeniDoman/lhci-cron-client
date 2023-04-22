@@ -1,4 +1,4 @@
-FROM patrickhulce/lhci-client:0.11.0
+FROM patrickhulce/lhci-client:0.12.0
 
 COPY entrypoint.sh lhci-client.sh /home/lhci/reports/
 
